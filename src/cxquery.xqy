@@ -10,7 +10,7 @@ declare function cxq:contains-element($element as node(), $sequence as node()*) 
     some $item in $sequence satisfies ($element eq $item)
 };
 
-declare function cxq:highest-frequency-item-in-sequence($sequence as node()*) {
+declare function cxq:highest-frequency-item-in-sequence($sequence as item()*) {
     for $max-freq in fn:max(for $val in fn:distinct-values($sequence)
     return fn:count(fn:index-of($sequence, $val)))
     return fn:distinct-values($sequence)[fn:count(fn:index-of($sequence, .)) eq $max-freq]
